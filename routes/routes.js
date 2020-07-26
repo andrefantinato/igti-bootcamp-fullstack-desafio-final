@@ -2,6 +2,7 @@ const express = require('express');
 const service = require('../services/transactionService');
 const transactionRouter = express.Router();
 
+transactionRouter.get('/months', service.getMonths);
 transactionRouter.get('/', service.get);
 transactionRouter.get('/:period', service.get);
 transactionRouter.post('/', service.create);

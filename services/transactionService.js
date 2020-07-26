@@ -7,6 +7,16 @@ const ObjectId = mongoose.Types.ObjectId;
 // descobrir esse erro :-/
 const transactionModel = require('../models/TransactionModel');
 
+exports.getMonths = async (req, res, next) => {
+    const yearmonths = await transactionModel
+        .find()
+        .distinct('yearMonth', function (error, ids) {});
+
+    res.status(200).send({
+        yearmonths: yearmonths,
+    });
+};
+
 exports.get = async (req, res, next) => {
     let { period } = req.params;
 
@@ -95,6 +105,6 @@ exports.delete = async (req, res, next) => {
     });
 
     res.status(200).send({
-        transaction: transactions,
+        deletedCount: transactions.deletedCount,
     });
 };
