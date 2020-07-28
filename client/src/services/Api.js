@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-const API_URL =
-    'http://andrefantinato-desafio-igti.herokuapp.com/api/transaction/';
+const API_URL = 'http://localhost:3001/api/transaction/';
 
 async function getYearMonths() {
     const res = await axios.get(`${API_URL}/months`);
